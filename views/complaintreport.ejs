@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+<style>
+  *, *:after, *:before {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    background: #fff;
+    color: #000;
+  }
+  .container {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  .filter-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .asc::after {
+    content: ' ▲';
+  }
+  .desc::after {
+    content: ' ▼';
+  }
+  .pdf-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <input type="text" class="filter-input" placeholder="Filter by ID Number...">
+  <table>
+    <thead>
+      <tr>
+        <th data-sortable="cus_id_number">Title</th>
+        <th data-sortable="name">Message</th>
+        <th data-sortable="email">Email</th>
+        <th data-sortable="password">Cus_Id_Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Sample data for demonstration -->
+      <% data.forEach(row => { %>
+        <tr>
+          <td><%= row.title %></td>
+          <td><%= row.message %></td>
+          <td><%= row.email %></td>
+          <td><%= row.cus_id %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <button class="pdf-button" onclick="generatePDF()">Export to PDF</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+
+<script>
+function generatePDF() {
+  const rows = document.querySelectorAll('tbody tr');
+  const doc = new jspdf.jsPDF({
+    orientation: 'landscape', // 'portrait' or 'landscape'
+    unit: 'mm', // units: 'mm', 'cm', 'in', 'px'
+    format: [800, 210] // A4 size in portrait
+  });
+
+  let y = 10; // Initial y position
+
+  // Add table headers to PDF
+  const headers = Array.from(document.querySelectorAll('thead th'));
+  let x = 10; // Initial x position
+
+  headers.forEach(header => {
+    const headerText = header.textContent.trim();
+    const headerWidth = doc.getStringUnitWidth(headerText) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+    doc.text(headerText, x, y);
+    x += headerWidth + 55; // Add extra spacing between headers
+  });
+
+  y += 15 // Adjust the spacing for data rows
+
+  // Add data rows to PDF
+  rows.forEach(row => {
+    const cells = row.querySelectorAll('td');
+    let x = 10; // Reset x position for data cells
+    if(row.style.display == "none"){
+
+}
+else{
+    cells.forEach(cell => {
+      
+     
+    
+      const cellText = cell.textContent.trim();
+    const cellWidth = doc.getStringUnitWidth(cellText) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+    
+    // Check if current cell width exceeds available width, adjust accordingly
+    if (x + cellWidth > doc.internal.pageSize.width - 10) {
+      // Move to the next line if cell content overflows
+      y += 10;
+      x = 10;
+    }
+
+    // Add content to PDF
+    doc.text(cellText, x, y);
+    x += cellWidth + 15; // Add extra spacing between cells
+
+      
+    
+    
+  });
+  y += 10; // Adjust the spacing between rows
+
+}
+    
+ 
+  });
+
+  // Save the PDF
+  doc.save('filtered_records.pdf');
+}
+
+// Filter function
+function filterData(searchTerm) {
+  const rows = document.querySelectorAll('tbody tr');
+  rows.forEach(row => {
+    const nameCell = row.querySelector('td:nth-child(4)'); // Assuming Name is the second column
+    const nameText = nameCell.textContent.toLowerCase();
+    row.style.display = nameText.includes(searchTerm.toLowerCase()) ? '' : 'none';
+  });
+}
+
+// Sort function
+function sortData(columnIndex, isAscending) {
+  const rows = Array.from(document.querySelectorAll('tbody tr'));
+  rows.sort((a, b) => {
+    const valueA = a.querySelectorAll('td')[columnIndex].textContent.trim();
+    const valueB = b.querySelectorAll('td')[columnIndex].textContent.trim();
+    return isAscending ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+  });
+  const tableBody = document.querySelector('tbody');
+  tableBody.innerHTML = '';
+  rows.forEach(row => tableBody.appendChild(row));
+}
+
+// Attach filter event listener
+const filterInput = document.querySelector('.filter-input');
+filterInput.addEventListener('keyup', (event) => filterData(event.target.value));
+
+// Attach sort event listeners
+const tableHeaders = document.querySelectorAll('th[data-sortable]');
+tableHeaders.forEach((header, index) => {
+  header.addEventListener('click', () => {
+    const isAscending = header.classList.contains('asc');
+    tableHeaders.forEach(header => header.classList.remove('asc', 'desc'));
+    header.classList.toggle(isAscending ? 'desc' : 'asc');
+    sortData(index, isAscending);
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            overflow: hidden; /* Hide overflow to prevent scrollbars */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Set height to full viewport height */
+             }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 90%;
+            min-height: 90%;
+            z-index: -1; /* Place video behind other content */
+            object-fit: cover; /* Cover entire element */
+        }
+        .loading{
+            display: flex;
+        }
+input:focus{
+    outline: none;
+}
+        .content {
+            font-family: "Poppins";
+            position: absolute;
+            top: 5px;
+            z-index: 1; /* Ensure content is above video */
+            text-align: center;
+            color: #fff;
+            font-size: 2rem;
+            padding: 20px;
+        }
+        input::placeholder{
+            color: #fff;
+            font-family: "Poppins";  
+        }
+        input{
+            width: 200px;
+            height: 30px;
+            padding: 10px;
+            background-color:transparent;
+            border: 2px solid rgb(223, 225, 223);
+         
+            border-radius: 10px;
+            color: #fff;
+            font-family: "Poppins";
+        }
+    button{
+        margin-top: 20px;
+        width: 100px;
+        padding: 10px;
+        font-family: "Poppins";
+        border-radius: 10px;
+        color: white;
+        background-color: black;
+        border:2px solid white;
+        display: none;
+    }
+    
+    </style>
+</head>
+<body>
+    <video muted autoplay loop>
+        <source src="k.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="content">
+        <h1>Administrator Panel</h1>
+        <input type="password" placeholder="Enter Password"><br>
+        <button id="btn">Log in</button>
+
+    </div>
+    <script>
+        document.querySelector('input').addEventListener('input',(e)=>{
+            if(e.target.value.length < 1){
+document.getElementById('btn').style.display ='none'
+            }
+            else{
+document.getElementById('btn').style.display ='inline'
+            }
+        })
+        document.getElementById('btn').addEventListener('click',()=>{
+            if(document.querySelector('input').value === '1234'){
+                document.querySelector('input').style.border ='2px solid rgb(102, 240, 102)'
+
+                setTimeout(()=>{
+                       location.href="./login"
+                   },1000)
+             
+            }
+            else{
+                document.querySelector('input').style.border = '2px solid rgb(228, 87, 22)'
+                setTimeout(()=>{
+                    document.querySelector('input').style.border  ='2px solid rgb(223, 223, 225)'
+                },1000)
+            }
+        })
+
+    </script>
+</body>
+</html>

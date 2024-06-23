@@ -1,0 +1,592 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sent Reply</title>
+    <link rel="icon" href="path/to/your/icon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0d8e1c9927.js" crossorigin="anonymous"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+            background-color: #192043;
+        }
+        .container{
+          
+            width: 100vw;
+            overflow: hidden;
+            font-family: "Poppins";
+            padding: 15;
+        }
+        header{
+           
+            border: none;
+            display: flex;
+          padding: 9;
+          /*transform: translateX(19%);*/
+          transition: all .9s linear;
+          transform: translateX(225px);
+          width: 1169px;
+          background: linear-gradient(to right, #2e4092, #113cd7);
+          border-radius: 0px 10px 0px 0px;
+          
+        }
+        .top-header{
+            width: 95%;
+          
+            margin-left: 10;
+            height: 40px;
+           
+
+        }
+        .account-profile{
+            position: relative;
+            top: -50;
+            display: flex;
+           
+          
+           float: right;
+         
+            
+            justify-content: center;
+           
+        }
+        .img-holder{
+            position: relative;
+            top: 5;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        .profile-name{
+            margin-left: 10;
+            text-align: center;
+            color: white;
+            font-size: 15px;
+           
+        }
+        .toogle-menu i{
+            font-size: 20px;
+        }
+        .side-menu{
+            position: absolute;
+            top: 15;
+        background-color: #2a2a2b;
+            width: 226px;
+            height: 595px;
+            transition: all .9s linear;
+            border-radius: 10px 0px 0px 10px;
+        }
+        .side-menu .header{
+            position: relative;
+           height: 58px;
+           top: -16;
+         border-radius: 10px 0px 0px 0px;
+        
+            text-align: center;
+            font-family: inherit;
+            background: linear-gradient(to right, #041a7c, #2f56e5);
+            
+        }
+        .logo{
+            width: 100%;
+            height: 100%;
+            color: white;
+            position: relative;
+            top: 16;
+        }
+        .main{
+           
+            transition: all .9s linear;
+          padding: 18;
+          transform: translateX(225px);
+          width: 1152px;
+          height: 500px;
+          background-color: #e4e4e4;
+        overflow-y: auto;
+        
+        
+        }
+        .toogle-menu button{
+padding: 10;
+border: none;
+background-color: transparent;
+cursor: pointer;
+transition: all .5s linear;
+color: white;
+        }
+        .toogle-menu button:hover{
+            background-color: #041a7c;
+        }
+       .mail-box i{
+       
+        padding: 15;
+        margin-right: 40;
+font-size: 25px;
+color: #2380c8;
+        }
+        .mail-box {
+            position: relative
+        }
+        .mail-box span{
+            position: absolute;
+            right: 40;
+            top: 4;
+            border-radius: 50%;
+            width: 10px;
+            padding: 8;
+            font-size: 8px;
+            background-color: rgb(188, 50, 50);
+            color: white;
+            font-family: inherit;
+            text-align: center;
+        }
+        h5,h2{
+display: inline-block;
+margin: 5;
+        }
+        .main h5{
+            color: #57585b;
+        }
+        .card{
+            border: 1px solid #4560be;
+            width: 300px;
+            background-color: #4560be;
+            color: white;
+            border-radius: 5%;
+            margin: 15px;
+        }
+        .details{
+            text-align: center;
+           
+            width: 150px;
+         
+        }
+        .footer{
+         
+            text-align: center;
+            background-color: #4560be;
+           
+        }
+        .icon-holder{
+            width: 150px;
+          
+            text-align: center;
+        }
+        .icon-holder i{
+            transform: translateY(15px);
+            padding: 25;
+            padding-left: 65;
+            font-size: 60px;
+            color: rgb(196, 200, 196,0.6)
+         
+        }
+        .card-h{
+            display: flex;
+        }
+        .footer i{
+            color:white;
+            
+        }
+        .num p{
+            font-size: 25px;
+        }
+        .card-section{
+            display: flex;
+        }
+        .menu-item-first{
+           
+            margin: 10px;
+            display: flex;
+            color: white;
+            text-align: center;
+          
+            justify-content: space-evenly;
+            margin-top: 40px;
+            
+        }
+        .menu-item{
+           
+           margin: 10px;
+           display: flex;
+           color: white;
+           text-align: center;
+         
+           justify-content: space-evenly;
+     
+           
+       }
+      
+       .icon-menu i{
+        transform: translateY(5px);
+       }
+       .icon-menu-cart i{
+        transform: translateY(8px);
+       }
+       
+        .icon-menu{
+           
+           
+            width: 60px;
+           
+        }
+        .icon-menu-cart{
+        
+         
+            width: 60px;
+            
+        }
+        .menu-txt{
+         
+            width: 100px;
+        }
+        .menu-txt p{
+            text-align: start;
+        }
+        .search{
+            display: inline-flex;
+         position: relative;
+        
+         left: 400px;
+            font-family: inherit;
+            font-size: 15px;
+
+        }
+        .search p{
+            margin: 10;
+        }
+        .search input{
+           width: 400px;
+           padding: 10px;
+        }
+        td , th {
+            padding: 10px;
+            text-align: center;
+        }
+        th{
+            font-family: "Josefin Sans", sans-serif;;
+        }
+        td{
+         
+          
+           
+        }
+        table{
+            padding: 5;
+        
+        }
+        .menu-item:hover{
+background-color: rgb(224, 221, 221);
+color: #0e2165;
+        }
+
+        .pop-up-color{
+            display: none;
+
+        }
+        button{
+            border: none;
+            background-color: #113cd7;
+            color: #e4e4e4;
+            font-family: inherit;
+          font-family: 18px;
+            padding: 10;
+        }
+        a{
+            color: #e4e4e4;
+            text-decoration: none;
+        }
+        a:hover{
+            color: #030716;
+        }
+        .edit-color{
+       
+            height: 200px;
+            width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+        .btn{
+            margin: 20;
+        }
+        .form{
+            border-radius: 10px;
+            position: relative;
+            top: -60;
+            border: 1px solid violet;
+            padding: 15;
+            width: 350px;
+            margin: auto;
+            background-image: linear-gradient(45deg, rgb(80, 95, 223), rgb(13, 20, 87));
+  color: #dbdde3;
+        }
+ .form-item{
+    padding: 10;
+ }.form-item-btn button , input[type="button"]{
+    padding: 15;
+    background-color: #232c57;
+    border: none;
+    color: white;
+    font-family: inherit;
+ }
+ input[type=file] {
+    padding: 90
+ }
+ .form-item input{
+    background-color: transparent;
+    padding: 10;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid rgb(137, 137, 137);
+    font-family: inherit;
+ }
+ .file-upload-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+}
+
+.file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-input-label {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+input:focus{
+    outline: none;
+}
+input{
+    color: white;
+}
+
+.file-name {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #e6e6e6;
+}
+input::placeholder{
+    color: #ededed;
+}
+.pop-up-color-list{
+  
+    width: 200px;
+    height: 180px;
+    overflow-y: auto;
+    color: #a3a3ae;
+}
+.pop-up-color-list table{
+    color: inherit;
+}
+.color-list{
+    position: absolute;
+    top: 25px;
+    left: 900px;
+    width: 200px;
+   border-radius: 7px;
+    background-color: #131521;
+    display: none;
+}
+.color-list button{
+    background-color: transparent;
+    color: #cccdd2;
+    padding: 15px;
+
+}
+Textarea{
+    resize: none;
+    width: 300px;
+    height: 200px;
+    display: block;
+}
+.main button{
+    margin-top: 10px;
+}
+.account-display{
+    position: relative;
+   float: right;
+    top: -20;
+    width: 200px;
+    height: 200px;
+   display: none;
+    background-color: rgb(44, 49, 131);
+    z-index: 1;
+    text-align: center;
+    opacity: 1;
+    transition: all 1s linear;
+}
+.account-display  .profile-pic .img-holder{
+    margin: auto;
+    padding: 10;
+}
+.role-name p{
+color: rgb(230, 228, 224);
+font-size: 15px;
+}
+
+       
+      
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+   
+            <div class="top-header">
+           <div class="toogle-menu"><button><i class="fa-solid fa-bars" onclick="toggleMenu()"></i></button></div>
+           <div class="account-profile"><div class="mail-box">
+               <% if (messages === null  ||  messages === 0)  { %>
+                
+               <% } else { %>
+                   <span><%=messages  %></span>
+               <% } %>
+               
+   
+            
+               
+               <i class="fa-sharp fa-solid fa-envelope" ></i></div>
+            
+   
+                   <div class="img-holder"><img src="data:image/jpeg;base64,<%= admin.profile_pic %>" alt=""></div><div class="profile-name"><p><%= admin.name %></p></div>
+   
+              
+              
+              
+       </div>
+                   </header>
+
+                <div class="side-menu">
+                    <div class="header">
+                        <div class="logo">
+                            <p></p>
+                        </div>
+                        <div class="menu-item-first">
+                           <div class="icon-menu"> <a href="./admin"><p><i class="fa-solid fa-chart-line"></i></p></div> <div class="menu-txt"><p>Overview </p></a></div> 
+                        </div>
+                        <div class="menu-item">
+                            <div class="icon-menu-cart"><a href="./orders"><p><i class="fa-solid fa-cart-plus"></i></p></div><div class="menu-txt"><p> Orders </p></a></div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="icon-menu"> <a href="./customers"> <p><i class="fa-solid fa-users"></i></p></div> <div class="menu-txt"><p> Customers</p></a></div>
+                        </div>
+                    
+                        <div class="menu-item">
+                            <div class="icon-menu"><a href="./materials">  <p><i class="fa-solid fa-cart-arrow-down"></i></p></div> <div class="menu-txt"><p> Materials</p></a></div>
+                          
+                        </div>
+                       
+                        <div class="menu-item">
+                            <div class="icon-menu"> <a href="./complaints"> <p><i class="fa-solid fa-envelope"></i></i></p></div> <div class="menu-txt"><p>Complaints</p></a></div>
+                          
+                        </div>
+                        <div class="menu-item">
+                            <div class="icon-menu"> <a href="./report"> <p><i class="fa-solid fa-list-check"></i></i></p></div> <div class="menu-txt"><p>Reports</p></a></div>
+                          
+                        </div>
+                       
+                    </div>
+                    </div>
+
+<div class="main">
+
+    <div class="account-display">
+        <div class="profile-pic">
+           
+                <div class="img-holder"><img src="data:image/jpeg;base64,<%= admin.profile_pic %>" alt=""></div>
+        </div>
+        <div class="profile-name"><p><%= admin.name %></p></div>
+        <div class="role-name"><p>administrator</p></div>
+            </div>
+    <h2>Customer Reply</h2><h5>reply section</h5>
+   <form action="/sentReply">
+    <input type="hidden" name="email" value="<%= customer.email  %>">
+    <input type="hidden" name="id" value="<%= customer.id  %>">
+    <Textarea name="reply" placeholder="reply">
+
+    </Textarea>
+    <button>Send Reply</button>
+                        
+
+   </form>
+
+</div>
+
+    </div>
+    
+    <script>
+     
+        
+let clicked =false
+function toggleMenu(){
+ clicked =!clicked
+ if(clicked){
+    
+    const Menutxt = document.querySelectorAll('.menu-txt')
+    const sideM = document.querySelector('.side-menu')
+    const header = document.querySelector('header')
+    const main = document.querySelector('.main')
+    sideM.style.width='121px'
+    header.style.transform = 'translateX(115px)';
+   
+    main.style.transform = 'translateX(115px)';
+    header.style.width = '1119px';
+    main.style.width = '1102px';
+    setTimeout(()=>{
+Menutxt.forEach(node =>{
+    node.style.display="none"
+})
+    },800)
+ }
+ else{
+    const Menutxt = document.querySelectorAll('.menu-txt')
+    const sideM = document.querySelector('.side-menu')
+    const header = document.querySelector('header')
+    const main = document.querySelector('.main')
+    sideM.style.width='226px'
+    header.style.transform = '  translateX(225px)';
+    main.style.transform = ' translateX(225px)';
+    header.style.width = '1169px';
+    main.style.width = '1152px';
+    setTimeout(()=>{
+Menutxt.forEach(node =>{
+    node.style.display="block"
+})
+    },900)
+ }
+console.log(clicked)
+}
+
+
+
+    </script>
+</body>
+</html>
